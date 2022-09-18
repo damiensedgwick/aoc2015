@@ -18,3 +18,8 @@ func TestCalculatePresentArea(t *testing.T) {
 	assert.Equal(t, 58, CalculatePresentArea("2x3x4"))
 	assert.Equal(t, 43, CalculatePresentArea("1x1x10"))
 }
+
+func TestCalculateRibbonLength(t *testing.T) {
+	assert.Equal(t, 34, CalculateRibbonLength("2x3x4"))
+	assert.Equal(t, 14, CalculateRibbonLength("1x1x10"))
+}
