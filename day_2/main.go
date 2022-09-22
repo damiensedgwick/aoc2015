@@ -22,7 +22,7 @@ func MakePresentSlice(str string) []string {
 	return strings.Split(str, "\n")
 }
 
-func CalculatePresentArea(str string) int {
+func MakeSortedIntSlice(str string) []int {
 	s := strings.Split(str, "x")
 
 	var sides []int
@@ -33,21 +33,19 @@ func CalculatePresentArea(str string) int {
 
 	sort.Ints(sides)
 
-	return sides[0]*sides[1]*3 + sides[0]*sides[2]*2 + sides[1]*sides[2]*2
+	return sides
+}
+
+func CalculatePresentArea(str string) int {
+	s := MakeSortedIntSlice(str)
+
+	return s[0]*s[1]*3 + s[0]*s[2]*2 + s[1]*s[2]*2
 }
 
 func CalculateRibbonLength(str string) int {
-	s := strings.Split(str, "x")
+	s := MakeSortedIntSlice(str)
 
-	var sides []int
-	for _, sideString := range s {
-		side, _ := strconv.Atoi(sideString)
-		sides = append(sides, side)
-	}
-
-	sort.Ints(sides)
-
-	return sides[0] + sides[0] + sides[1] + sides[1] + sides[0]*sides[1]*sides[2]
+	return s[0] + s[0] + s[1] + s[1] + s[0]*s[1]*s[2]
 }
 
 func main() {
